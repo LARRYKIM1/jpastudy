@@ -1,7 +1,7 @@
 package com.larrykim.jpastudy;
 
-import com.larrykim.jpastudy.entity.Member;
-import com.larrykim.jpastudy.entity.Order;
+import com.larrykim.jpastudy.domain.Member;
+import com.larrykim.jpastudy.domain.Order;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.persistence.EntityManager;

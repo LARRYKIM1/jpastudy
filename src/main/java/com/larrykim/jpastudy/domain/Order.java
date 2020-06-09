@@ -1,4 +1,4 @@
-package com.larrykim.jpastudy.entity;
+package com.larrykim.jpastudy.domain;
 
 import lombok.NoArgsConstructor;
 
