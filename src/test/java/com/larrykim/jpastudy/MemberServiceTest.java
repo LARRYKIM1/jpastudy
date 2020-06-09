@@ -12,6 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
+//@RunWith -> JUnit으로 작성한 테스트 케이스를 스프링 프레임워크와 통합
+//@SpringBootTest -> 테스트에 사용할 ApplicationContext를 쉽게 생성하고 조작
+//@SpringBootTest -> 기능은 반드시 @RunWith(SpringRunner.class)와 함께 사용
+//@SpringBootTest -> 기존 스프링 테스트에서 사용하던 @ContextConfiguration의 발전된 기능
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
@@ -31,7 +35,6 @@ public class MemberServiceTest {
         Long saveId = memberService.join(member);
 
         //Then
-        System.out.println("진행중");
         assertEquals(member, memberRepository.findOne(saveId));
     }
 
@@ -45,20 +48,8 @@ public class MemberServiceTest {
         Member member2 = new Member();
         member2.setName("kim");
 
-        System.out.println("");
-        System.out.println("1@@@@@@@@@@@@@@@1@@@@@@@@@@@@@@@@");
-        System.out.println("");
-        //when
-        memberService.join(member1);
-        memberService.join(member2);
-
-        System.out.println("");
-        System.out.println("2@2@@@@@@@@@@@@@2@@@@@@@@@@@@@@@@@");
-        System.out.println("");
         //then
+        //위 지정한 예외가 발생해야 테스트가 성공
         fail("예외 발생");
-        System.out.println("");
-        System.out.println("3@@@@@@@@@@@@@@@@3@@@@@@@@@@@@@@@");
-        System.out.println("");
     }
 }

@@ -12,10 +12,6 @@ public class MemberRepository {
     @PersistenceContext
     EntityManager em;
 
-    //엔티티 매니저 팩토리를 주입받고 싶은 경우
-//    @PersistenceUnit
-//    EntityManagerFactory emf;
-
     public void save(Member member){
         em.persist(member);
     }
