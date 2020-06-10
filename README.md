@@ -12,6 +12,6 @@
 ![상품목록](https://gblobscdn.gitbook.com/assets%2F-M7KQQ2ZLP5HVNbeQNZi%2F-M9SIdFWaN6OBE3-X0id%2F-M9SJp6HWQ1IZwU0tDOF%2Fimage.png?alt=media&token=75796d3c-7764-4c5f-b58f-3eede5a96b35)
 ## 상품주문
 ![상품주문](https://gblobscdn.gitbook.com/assets%2F-M7KQQ2ZLP5HVNbeQNZi%2F-M9SIdFWaN6OBE3-X0id%2F-M9SKEFnt4a_pdt6uMBF%2Fimage.png?alt=media&token=1c10cc2f-d296-47ed-bc1d-e4814d63b074)
-## 
+## TransactionRequiredException 에러
 ![TransactionRequiredException 에러](https://gblobscdn.gitbook.com/assets%2F-M7KQQ2ZLP5HVNbeQNZi%2F-M9SIdFWaN6OBE3-X0id%2F-M9SKUXw_6eefwonmkWz%2Fimage.png?alt=media&token=e8d2c61e-6f9e-476b-84fd-5d4b6784da3a)
 - 13장 OSIV 참고  
