@@ -30,8 +30,43 @@ public class Order {
 
     private Date orderDate;
 
-//    @Enumerated(EnumType.STRING)
-//    private OrderStatus status;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus status;
+
+    //==생성 메서드==//
+    public static Order createOrder(Member member, Delivery delivery, OrderItem... orderItems) {
+        Order order = new Order();
+        order.setDelivery(delivery);
+        order.setMember(member);
+        for(OrderItem orderItem : orderItems){
+            order.addOrderItem(orderItem);
+        }
+        order.setOrderDate(new Date());
+        order.setStatus(OrderStatus.ORDER);
+        return order;
+    }
+
+    /** 주문 취소 */
+    public void cancel() {
+        if ( this.delivery.getStatus() == DeliveryStatus.COMP){
+            throw new RuntimeException("이미 배송완료된 상품입니다.");
+        }
+
+        setStatus(OrderStatus.CANCEL);
+
+        for(OrderItem orderItem : orderItems){
+            orderItem.cancel();
+        }
+
+    }
+
+    public int getTotalPrice(){
+        int totalPrice=0;
+        for( OrderItem orderItem : orderItems ){
+            totalPrice += orderItem.getTotalPrice();
+        }
+        return totalPrice;
+    }
 
     // 편의 메소드
     public void setMember(Member member){

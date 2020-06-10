@@ -1,4 +1,5 @@
 package com.larrykim.jpastudy.domain.Item;
+
 import lombok.Getter;
 import lombok.Setter;
 

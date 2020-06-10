@@ -2,8 +2,7 @@ package com.larrykim.jpastudy.domain.Item;
 
 import com.larrykim.jpastudy.domain.Category;
 import com.larrykim.jpastudy.exception.NotEnoughStockException;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ import java.util.List;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "DTYPE")
+@ToString
 public abstract class Item {
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
