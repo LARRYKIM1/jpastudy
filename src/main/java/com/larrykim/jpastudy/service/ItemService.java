@@ -23,7 +23,6 @@ public class ItemService {
         return itemRepository.findAll();
     }
 
-    public Item fineOne(Long itemId){
-        return itemRepository.findOne(itemId);
-    }
+    public Item findOne(Long itemId) { return itemRepository.findOne(itemId); }
+
 }

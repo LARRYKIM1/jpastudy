@@ -20,7 +20,7 @@ public class OrderService {
     public Long order(Long memberId, Long itemId, int count){
 
         Member member = memberRepository.findOne(memberId);
-        Item item = itemService.fineOne(itemId);
+        Item item = itemService.findOne(itemId);
 
         Delivery delivery = new Delivery(member.getAddress());
 
