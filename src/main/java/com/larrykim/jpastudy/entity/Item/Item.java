@@ -1,8 +1,6 @@
 package com.larrykim.jpastudy.entity.Item;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +8,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@RequiredArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "DTYPE")
 @ToString
@@ -19,12 +18,8 @@ public abstract class Item {
     private Long id;
 
     private String name;
-    private int price;
-    private  int stockQuantity;
 
-
-    public void addStock(int quantity){
-        this.stockQuantity+=quantity;
+    public Item(String name) {
+        this.name = name;
     }
-
 }
