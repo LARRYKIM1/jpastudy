@@ -1,28 +1,26 @@
 package com.larrykim.jpastudy.service;
 
-import com.larrykim.jpastudy.domain.Item.Item;
-import com.larrykim.jpastudy.repository.ItemRepository;
-import lombok.RequiredArgsConstructor;
+import com.larrykim.jpastudy.dao.ItemRepository;
+import com.larrykim.jpastudy.entity.Item;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Transactional
-@RequiredArgsConstructor
 @Service
 public class ItemService {
+    @Autowired
+    ItemRepository itemRepository;
 
-    private final ItemRepository itemRepository;
+    @Transactional
+    public List<Item> get() {
+        List<Item> items = itemRepository.findAll();
 
-    public void saveItem(Item item){
-        itemRepository.save(item);
+//        items.stream().forEach(item -> {
+//            System.out.println("item.getPerson().getName() == " + item.getPerson().getName());
+//        });
+
+        return items;
     }
-
-    public List<Item> findItems(){
-        return itemRepository.findAll();
-    }
-
-    public Item findOne(Long itemId) { return itemRepository.findOne(itemId); }
-
 }
