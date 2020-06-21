@@ -1,5 +1,6 @@
 package com.larrykim.jpastudy.entity.Item;
 
+import com.larrykim.jpastudy.common.Visitor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,7 +16,7 @@ public class Movie extends Item{
     private String actor;
 
     @Override
-    public String getTitle() {
-        return "Movie 타이틀을 리턴합니다.";
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

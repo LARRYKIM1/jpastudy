@@ -1,5 +1,6 @@
 package com.larrykim.jpastudy.entity.Item;
 
+import com.larrykim.jpastudy.common.Visitor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +25,7 @@ public class Book extends Item{
     }
 
     @Override
-    public String getTitle() {
-        return "Book 타이틀을 리턴합니다.";
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }

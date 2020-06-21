@@ -3,8 +3,7 @@ package com.larrykim.jpastudy;
 import com.larrykim.jpastudy.entity.Item.Book;
 import com.larrykim.jpastudy.entity.Item.Item;
 import com.larrykim.jpastudy.entity.OrderItem;
-import org.hibernate.Hibernate;
-import org.junit.Assert;
+import com.larrykim.jpastudy.func.PrintVisitor;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -27,62 +26,18 @@ public class ParentChildProxyTest {
     EntityManager em;
 
     @Test
-    public void 부모타입으로_프록시조회 () {
-        Book savedBook = new Book();
-        savedBook.setName("jpabook");
-        savedBook.setAuthor("kim");
-        em.persist(savedBook);
-        em.flush();
-        em.clear();
-
-        // 프록시를 부모 타입으로 조회
-        Item proxyItem = em.getReference(Item.class, savedBook.getId());
-
-        if (proxyItem instanceof Book) { // false
-            System.out.println("proxyitem instanceof Book");
-            Book book = (Book) proxyItem;
-            System.out.println("책 저자 = " + book.getAuthor());
-        } else {
-            System.out.println("부모타입프록시를 자식타입하고 instanceof 비교할 수 없습니다.");
-        }
-
-        Assert.assertFalse( proxyItem.getClass() == Book.class );
-        Assert.assertFalse( proxyItem instanceof Book );
-        Assert.assertTrue( proxyItem instanceof Item );
-    }
-
-
-    @Test
-    public void 하이버네이트_언프록시_1 (){
+    public void 비지터_패턴_사용_3 (){
         OrderItem orderItem = generateOrderItem();
-
-        boolean isLoaded = emf.getPersistenceUnitUtil().isLoaded(orderItem.getItem());
 
         Item item = orderItem.getItem();
-        Item unProxyitem = (Item) Hibernate.unproxy(item); //unproxy()
 
-//        System.out.println("=============================================");
-//        System.out.println("item 클래스 확인 = "+item.getClass());
-//        System.out.println("unProxyitem 클래스 확인 = "+unProxyitem.getClass());
-//        System.out.println("=============================================");
-        
-        if (unProxyitem instanceof Book) { // 전에 실패 했지만 지금은 성공
-            System.out.println("=============================================");
-            System.out.println("proxyitem instanceof Book");
-            Book book = (Book) unProxyitem;
-            System.out.println( "책 저자 = " + book.getAuthor());
-        } else {
-            System.out.println("부모타입프록시를 자식타입하고 instanceof 비교할 수 없습니다.");
-        }
+        System.out.println("1. 첫번째");
+        item.accept(new PrintVisitor());
 
-        Assert.assertTrue(item != unProxyitem); // 프록시 != 원본 엔티티 -> 참
-    }
+        //프록시를 부모 타입으로 조회하면,
+        //부모의 타입을 기반으로 프록시가 생성되는 문제를 해결하기 위해
+        //서브클래스 타입을 확인하기 위한 방법에 대해 테스트해본 것이다.
 
-    @Test
-    public void 기능을_위한_별도_인터페이스_제공_2 (){
-        //생선된 주문아이템에는 Book 아이템이 들어가있다.
-        OrderItem orderItem = generateOrderItem();
-        orderItem.printItem();
     }
 
     public OrderItem generateOrderItem(){

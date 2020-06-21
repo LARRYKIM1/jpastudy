@@ -19,10 +19,4 @@ public class OrderItem {
     @JoinColumn(name = "ITEM_ID")
     private Item item;
 
-    public void printItem() {
-        System.out.println("OrderItem의 printItem() 메소드를 호출합니다.");
-        System.out.println("==============================");
-        System.out.println("TITLE="+item.getTitle());
-        System.out.println("==============================");
-    }
 }

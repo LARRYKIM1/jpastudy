@@ -1,5 +1,6 @@
 package com.larrykim.jpastudy.entity.Item;
 
+import com.larrykim.jpastudy.common.Visitor;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,8 +14,9 @@ public class Album extends Item {
     private String artist;
     private String etc;
 
+
     @Override
-    public String getTitle() {
-        return "Album 타이틀을 리턴합니다.";
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
     }
 }
