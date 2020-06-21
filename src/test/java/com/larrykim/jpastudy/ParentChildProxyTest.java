@@ -53,7 +53,7 @@ public class ParentChildProxyTest {
 
 
     @Test
-    public void 하이버네이트_언프록시 (){
+    public void 하이버네이트_언프록시_1 (){
         OrderItem orderItem = generateOrderItem();
 
         boolean isLoaded = emf.getPersistenceUnitUtil().isLoaded(orderItem.getItem());
@@ -78,6 +78,13 @@ public class ParentChildProxyTest {
         Assert.assertTrue(item != unProxyitem); // 프록시 != 원본 엔티티 -> 참
     }
 
+    @Test
+    public void 기능을_위한_별도_인터페이스_제공_2 (){
+        //생선된 주문아이템에는 Book 아이템이 들어가있다.
+        OrderItem orderItem = generateOrderItem();
+        orderItem.printItem();
+    }
+
     public OrderItem generateOrderItem(){
 
         //https://reinhard.codes/2015/09/16/lomboks-builder-annotation-and-inheritance/
@@ -98,4 +105,5 @@ public class ParentChildProxyTest {
 
         return em.find(OrderItem.class, orderItem.getId());
     }
+
 }

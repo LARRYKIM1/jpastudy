@@ -12,4 +12,9 @@ import javax.persistence.Entity;
 public class Album extends Item {
     private String artist;
     private String etc;
+
+    @Override
+    public String getTitle() {
+        return "Album 타이틀을 리턴합니다.";
+    }
 }

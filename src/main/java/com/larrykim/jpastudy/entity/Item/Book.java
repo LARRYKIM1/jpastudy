@@ -22,4 +22,9 @@ public class Book extends Item{
         super(name);
         this.author = author;
     }
+
+    @Override
+    public String getTitle() {
+        return "Book 타이틀을 리턴합니다.";
+    }
 }
